@@ -46,18 +46,12 @@ public class PlayerStats : MonoBehaviour
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < currentLives)
-            {
-                hearts[i].SetActive(true);
-            }
+            hearts[i].SetActive(i < currentLives);
         }
     }
 
     private void Die()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.EndRound("kek ur bad");
-        }
+        GameManager.Instance?.EndRound("Player died");
     }
 }

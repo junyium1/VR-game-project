@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public enum GameState {MainMenu, Fighting, RoundOver, Pause}
     public GameState currentState;
 
-    [Header("Param de l'arène")]
+    [Header("Param de l'arene")]
     public float timeLimit = 120f;
     private float currentTime;
 
@@ -19,12 +19,25 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     public Transform[] spawnpoints;
     private string winnerName;
+    
+    public Transform playerTransform;
+    public float spawnRadius = 8f;
 
 
+    
     void Start()
     {
+        currentState = GameState.MainMenu;
+    }
+
+    public void StartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Arena Alpha");
         StartRound();
     }
+    
+    
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -37,11 +50,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    
+    
     private void Update()
     {
         if (currentState == GameState.Fighting)
         {
-            currentTime = Time.deltaTime;
+            currentTime -= Time.deltaTime;
 
             if (currentTime <= 0)
             {
@@ -61,17 +76,34 @@ public class GameManager : MonoBehaviour
         SpawnEnemies();
     }
 
+    
+    
     public void SpawnEnemies()
     {
-        if (spawnpoints.Length == 0 || enemyPrefab == null) return;
+        if (enemyPrefab == null) return;
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Transform sp = spawnpoints[Random.Range(0, spawnpoints.Length)];
-            Instantiate(enemyPrefab, sp.position, Quaternion.identity);
+            Vector3 spawnPos = GetRandomSpawnAroundPlayer();
+            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
         }
     }
 
+
+    private Vector3 GetRandomSpawnAroundPlayer()
+    {
+        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+        float x = Mathf.Cos(angle) * spawnRadius;
+        float z = Mathf.Sin(angle) * spawnRadius;
+        return new Vector3(
+            playerTransform.position.x + x,
+            playerTransform.position.y,
+            playerTransform.position.z + z
+        );
+    }
+
+    
+    
     public void enemyKilled()
     {
         if (currentState != GameState.Fighting) return;
@@ -87,6 +119,10 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
 
 
 

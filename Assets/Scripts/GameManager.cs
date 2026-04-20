@@ -14,10 +14,8 @@ public class GameManager : MonoBehaviour
 
     public int enemiesToSpawn = 5;
     private int enemiesDefeated = 0;
-
-    [Header("Spawning")]
+    
     public GameObject enemyPrefab;
-    public Transform[] spawnpoints;
     private string winnerName;
     
     public Transform playerTransform;
@@ -124,12 +122,12 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
-
-
-
-    public void EndRound(string winnerName)
+    
+    
+    public void EndRound(string reason)
     {
         currentState = GameState.RoundOver;
-        Debug.Log("winner :" + winnerName);
+        GameObject canvas = GameObject.FindWithTag("GameOverCanvas");
+        if (canvas != null) canvas.SetActive(true);
     }
 }

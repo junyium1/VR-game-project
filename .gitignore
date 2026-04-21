@@ -72,6 +72,7 @@ mono_crash.*
 *.unitypackage
 *.unitypackage.meta
 *.app
+*_BackUpThisFolder_ButDontShipItWithYourGame/
 
 # Crashlytics generated file
 crashlytics-build.properties
@@ -97,3 +98,28 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+
+/[Nn]ame_BurstDebugInformation_DoNotShip/
+*BurstDebugInformation_DoNotShip/
+
+
+# --- Builds & Artifacts to NOT ship ---
+# Capture les dossiers de build classiques
+/[Bb]uild/
+/[Bb]uilds/
+/Build/
+/Builds/
+
+
+*BackUpThisFolder_ButDontShipItWithYourGame/
+
+*BurstDebugInformation_DoNotShip/
+
+*DoNotShip/
+
+*.apk
+*.aab
+*.unitypackage
+*.unitypackage.meta
+*.app

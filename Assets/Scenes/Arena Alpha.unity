@@ -181,7 +181,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3612214223758613594, guid: 5fc2d6855c086744b9fb7a0296f11eb6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1906824584}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7849309317454598982, guid: 5fc2d6855c086744b9fb7a0296f11eb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 357774314}
+    - targetCorrespondingSourceObject: {fileID: 7849309317454598982, guid: 5fc2d6855c086744b9fb7a0296f11eb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 357774315}
   m_SourcePrefab: {fileID: 100100000, guid: 5fc2d6855c086744b9fb7a0296f11eb6, type: 3}
 --- !u!4 &41074787 stripped
 Transform:
@@ -454,6 +460,69 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &357774313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7849309317454598982, guid: 5fc2d6855c086744b9fb7a0296f11eb6, type: 3}
+  m_PrefabInstance: {fileID: 41074786}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &357774314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357774313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04734f0c03ac45c46a6465fbd3135eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  maxLives: 2
+  currentLives: 0
+  hearts:
+  - {fileID: 1385263985}
+  - {fileID: 520460850}
+  maxStamina: 100
+  currentStamina: 0
+  staminaRegenRate: 15
+  staminaBar: {fileID: 0}
+--- !u!114 &357774315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357774313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5ca6b9a03b2194daa0d78fae0abd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestDamage
+  bButton:
+    m_UseReference: 0
+    m_Action:
+      m_Name: B Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d74500a6-601f-45b8-8ebb-46a1d46e069b
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 39499914-ed22-4b55-8f47-85bb682ccb4d
+        m_Path: <XRController>{RightHand}/secondaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: B Button
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+--- !u!1 &520460850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1490013318419340948, guid: 5fc2d6855c086744b9fb7a0296f11eb6, type: 3}
+  m_PrefabInstance: {fileID: 41074786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &585870314
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +721,11 @@ MonoBehaviour:
   m_Teleporting:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1385263985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 977861540381364004, guid: 5fc2d6855c086744b9fb7a0296f11eb6, type: 3}
+  m_PrefabInstance: {fileID: 41074786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1771955610
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +922,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1772844920}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1978199639898658700}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1772844920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,9 +1266,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5891676166626801146, guid: 9af670edad331ba48b50651d08bbf5a0, type: 3}
+      propertyPath: timeLimit
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5891676166626801146, guid: 9af670edad331ba48b50651d08bbf5a0, type: 3}
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 6067600717448128401, guid: 66fc196808cdc46429b39cec24ec0d7a, type: 3}
+    - target: {fileID: 5891676166626801146, guid: 9af670edad331ba48b50651d08bbf5a0, type: 3}
+      propertyPath: spawnRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5891676166626801146, guid: 9af670edad331ba48b50651d08bbf5a0, type: 3}
+      propertyPath: enemiesToSpawn
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5891676166626801146, guid: 9af670edad331ba48b50651d08bbf5a0, type: 3}
       propertyPath: playerTransform
       value: 
@@ -1228,6 +1326,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1be7213cbe39c4ea5e2c1a0c04fd72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaStarter
+--- !u!114 &1978199639898658700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5891676166626801146, guid: 9af670edad331ba48b50651d08bbf5a0, type: 3}
+  m_PrefabInstance: {fileID: 1978199639898658697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978199639898658698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467b4ffe603e9b54f94d5f857c40b70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
     public void Update()
     {
-        if (!isDead || player == null) return;
+        if (isDead || player == null) return;
         
         Vector3 dir = (player.position - transform.position).normalized;
         transform.position += dir * moveSpeed * Time.deltaTime;
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (isDead) return;
         if (other.gameObject.CompareTag("Player"))

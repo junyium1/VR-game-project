@@ -11,17 +11,8 @@ public class GameManager : MonoBehaviour
     public float timeLimit = 120f;
     private float currentTime;
 
-    public int enemiesToSpawn = 5;
-    private int enemiesDefeated = 0;
-    
-    public GameObject enemyPrefab;
     private string winnerName;
-    
-    public Transform playerTransform;
-    public float spawnRadius = 8f;
 
-
-    
     void Start()
     {
     }
@@ -30,9 +21,7 @@ public class GameManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Arena Alpha");
     }
-    
-    
-    
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -45,8 +34,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    
-    
     private void Update()
     {
         if (currentState == GameState.Fighting)
@@ -60,69 +47,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
     public void StartRound()
     {
-        if (playerTransform == null)
-            playerTransform = Camera.main.transform;
-
         currentState = GameState.Fighting;
         currentTime = timeLimit;
-        enemiesDefeated = 0;
-        SpawnEnemies();
     }
-
-    
-    
-    public void SpawnEnemies()
-    {
-        if (enemyPrefab == null) return;
-
-        for (int i = 0; i < enemiesToSpawn; i++)
-        {
-            Vector3 spawnPos = GetRandomSpawnAroundPlayer();
-            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-        }
-    }
-
-
-    private Vector3 GetRandomSpawnAroundPlayer()
-    {
-        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
-        float x = Mathf.Cos(angle) * spawnRadius;
-        float z = Mathf.Sin(angle) * spawnRadius;
-        return new Vector3(
-            playerTransform.position.x + x,
-            playerTransform.position.y + 1f,
-            playerTransform.position.z + z
-        );
-    }
-
-    
-    
-    public void enemyKilled()
-    {
-        if (currentState != GameState.Fighting) return;
-
-        enemiesDefeated++;
-        Debug.Log("Ennemi battu (" + enemiesDefeated + "/" + enemiesToSpawn + ")");
-
-        if (enemiesDefeated >= enemiesToSpawn)
-        {
-            currentState = GameState.RoundOver;
-            Debug.Log("K.O. " + winnerName);
-        }
-    }
-
 
     public void RestartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
-    
-    
     public void EndRound(string reason)
     {
         currentState = GameState.RoundOver;

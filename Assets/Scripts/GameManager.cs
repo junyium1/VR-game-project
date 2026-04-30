@@ -1,4 +1,3 @@
-using Oculus.Interaction.Feedback;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -25,13 +24,11 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        currentState = GameState.MainMenu;
     }
 
     public void StartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Arena Alpha");
-        StartRound();
     }
     
     
@@ -67,10 +64,12 @@ public class GameManager : MonoBehaviour
 
     public void StartRound()
     {
+        if (playerTransform == null)
+            playerTransform = Camera.main.transform;
+
         currentState = GameState.Fighting;
         currentTime = timeLimit;
         enemiesDefeated = 0;
-        Debug.Log("Temps imparti : " + timeLimit + "s");
         SpawnEnemies();
     }
 
@@ -95,7 +94,7 @@ public class GameManager : MonoBehaviour
         float z = Mathf.Sin(angle) * spawnRadius;
         return new Vector3(
             playerTransform.position.x + x,
-            playerTransform.position.y,
+            playerTransform.position.y + 1f,
             playerTransform.position.z + z
         );
     }

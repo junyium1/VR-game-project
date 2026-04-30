@@ -11,15 +11,15 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = Camera.main.transform;
     }
 
     public void Update()
     {
         if (isDead || player == null) return;
-        
+
         Vector3 dir = (player.position - transform.position).normalized;
-        transform.position += dir * moveSpeed * Time.deltaTime;
+        rb.MovePosition(transform.position + dir * moveSpeed * Time.deltaTime);
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
     }
     public void GetHit(Vector3 knockbackDirection, float force)

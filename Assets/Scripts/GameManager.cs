@@ -3,6 +3,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
+    public GameObject gameOverCanvas;
+
 
     public enum GameState {MainMenu, Fighting, RoundOver, Pause}
     public GameState currentState;
@@ -52,16 +54,23 @@ public class GameManager : MonoBehaviour
         currentState = GameState.Fighting;
         currentTime = timeLimit;
     }
-
-    public void RestartGame()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-    }
+    
 
     public void EndRound(string reason)
     {
         currentState = GameState.RoundOver;
-        GameObject canvas = GameObject.FindWithTag("GameOverCanvas");
-        if (canvas != null) canvas.SetActive(true);
+
+        Time.timeScale = 0f;
+
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            Destroy(enemy);
+
+        if (gameOverCanvas != null) gameOverCanvas.SetActive(true);
+    }
+    
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }

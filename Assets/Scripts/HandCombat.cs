@@ -4,7 +4,7 @@ public class HandCombat : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        EnemyAiChase enemy = other.GetComponent<EnemyAiChase>();
+        EnemyKnockback enemy = other.GetComponent<EnemyKnockback>();
         if (enemy != null)
         {
             Vector3 hitDirection = (other.transform.position - transform.position).normalized;

@@ -29,6 +29,10 @@ public class EnemySpawner : MonoBehaviour
     {
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         Vector3 spawnPos = transform.position + new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * spawnRadius;
+
+        if (Physics.Raycast(spawnPos + Vector3.up * 10f, Vector3.down, out RaycastHit hit, 20f))
+            spawnPos = hit.point + Vector3.up * 1f;
+
         Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
     }
 }

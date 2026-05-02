@@ -882,6 +882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1235098968756898284}
   - component: {fileID: 7354639726259524936}
+  - component: {fileID: 4209277013279563546}
   m_Layer: 0
   m_Name: Left Hand
   m_TagString: Untagged
@@ -975,6 +976,19 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+--- !u!114 &4209277013279563546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318199710556821751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b8bdc0cf6794e4f9c2cf095a6f212e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HandCombat
+  knockbackForce: 10
 --- !u!1 &5746869905666330661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,6 +1193,7 @@ GameObject:
   - component: {fileID: 6731597025996384616}
   - component: {fileID: 174454717130199605}
   - component: {fileID: 1548123724806925821}
+  - component: {fileID: 8181759470680685774}
   m_Layer: 0
   m_Name: Right Hand
   m_TagString: Untagged
@@ -1298,6 +1313,19 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -8061240218431744966, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!114 &8181759470680685774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881973183203712594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b8bdc0cf6794e4f9c2cf095a6f212e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HandCombat
+  knockbackForce: 10
 --- !u!1 &9007650909321571767
 GameObject:
   m_ObjectHideFlags: 0

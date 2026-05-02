@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2997997875440507256}
   - component: {fileID: 6400943506642340462}
   - component: {fileID: 5402409772884939123}
-  - component: {fileID: 7684663299054617936}
   - component: {fileID: 3306546078056322725}
   m_Layer: 0
   m_Name: enemy
@@ -159,19 +158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDeath
   destroyDelay: 3
   isDead: 0
---- !u!114 &7684663299054617936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2776353540108641808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 526af2fdf48b136448449338125c5b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockback
-  knockbackForce: 10
 --- !u!114 &3306546078056322725
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -60,12 +60,16 @@ public class GameManager : MonoBehaviour
     {
         currentState = GameState.RoundOver;
 
-        Time.timeScale = 0f;
-
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             Destroy(enemy);
 
-        if (gameOverCanvas != null) gameOverCanvas.SetActive(true);
+        if (gameOverCanvas != null)
+        {
+            Camera cam = Camera.main;
+            gameOverCanvas.transform.position = cam.transform.position + cam.transform.forward * 1.5f;
+            gameOverCanvas.transform.rotation = Quaternion.LookRotation(cam.transform.forward);
+            gameOverCanvas.SetActive(true);
+        }
     }
     
     public void RestartGame()
